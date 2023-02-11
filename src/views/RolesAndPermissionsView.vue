@@ -1,6 +1,6 @@
 <template>
   <div class="user-list">
-    <h1>user list</h1>
+    <h1>Roles and Permissions</h1>
   </div>
 </template>
 

@@ -13,6 +13,26 @@ const router = createRouter({
       path: '/user-list',
       name: 'user-list',
       component: () => import('../views/UserListView.vue')
+    },
+    {
+      path: '/roles-and-permissions',
+      name: 'roles-and-permissions',
+      component: () => import('../views/RolesAndPermissionsView.vue')
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('../views/SettingsView.vue')
+    },
+    {
+      path: '/dummy-1',
+      name: 'dummy-1',
+      component: () => import('../views/Dummy1View.vue')
+    },
+    {
+      path: '/dummy-2',
+      name: 'dummy-2',
+      component: () => import('../views/Dummy2View.vue')
     }
   ]
 })
