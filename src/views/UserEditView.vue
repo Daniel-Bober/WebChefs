@@ -73,7 +73,7 @@ function closePopUpWindow() {
 }
 
 function blockUser() {
-  console.log("user blocked")
+  //Block User
   closePopUpWindow()
 }
 
