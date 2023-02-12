@@ -24,7 +24,6 @@
           <input type="date" id="date">
         </div>
 
-
       </div>
 
       <div class="right-side">
@@ -35,8 +34,13 @@
           <div class="second-text">Drag and drop files or select from your files</div>
         </div>
 
-      </div>
+        <div class="multi-select">
+          <MultiSelect
+              title="Citizenship"
+          ></MultiSelect>
+        </div>
 
+      </div>
     </div>
 
     <div class="title-section">
@@ -74,6 +78,7 @@
 
 <script setup lang='ts'>
 
+import MultiSelect from "@/components/MultiSelect/MultiSelect.vue";
 </script>
 
 <style lang='scss' scoped>
@@ -173,6 +178,10 @@
           color: $ui-g4;
           user-select: none;
         }
+      }
+
+      .multi-select {
+        margin-top: 16px;
       }
     }
 
