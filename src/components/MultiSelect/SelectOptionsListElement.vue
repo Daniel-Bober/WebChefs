@@ -1,37 +1,31 @@
 <template>
-  <button :class="selectOptionsListElementClassName" @click="selectElementToggle">{{ props.title }}</button>
+  <button :class="selectOptionsListElementClassName" @click="emitClickEvent">{{ props.country.name }}</button>
 </template>
 
 <script setup lang='ts'>
 import {computed} from "vue";
-import {CountryListElement} from "@/components/MultiSelect/MultiSelect.vue";
+import type {CountryListElement} from "@/types/CountryListElement";
+import type {PropType} from "vue"
 
 const props = defineProps({
   country: {
-    type: CountryListElement,
+    type: Object as PropType <CountryListElement>,
     required: true
   }
 });
 
-const emit = defineEmits(["addToSelected", "removeFromSelected"]);
+const emit = defineEmits(["addToSelected", "removeFromSelected", "clicked"]);
 
 
 const selectOptionsListElementClassName = computed(() => {
-  if(!props.country.isSelected) {
+  if (!props.country.isSelected) {
     return "select-options-list-element"
   }
-  else return "select-options-list-element selected"
+  return "select-options-list-element selected"
 });
 
-function selectElementToggle() {
-  if(!props.country.isSelected) {
-
-    emit("addToSelected", props.country.id)
-  }
-  else {
-
-    emit("removeFromSelected", props.country.title)
-  }
+function emitClickEvent() {
+  emit("clicked", props.country.id);
 }
 
 </script>

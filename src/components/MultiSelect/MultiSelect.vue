@@ -6,10 +6,9 @@
 
       <div class="selected-elements">
         <SelectedListElement
-            v-for="(selectedCountry, index) in selectedCountryList"
-            :key="selectedCountry"
-            :title="selectedCountry"
-            :id="index"
+            v-for="selectedCountry in selectedCountryList"
+            :key="selectedCountry.id"
+            :selected-country="selectedCountry"
             @remove-from-selected="removeCountryFromSelected"
         ></SelectedListElement>
       </div>
@@ -21,10 +20,9 @@
       <div :class="selectOptionsListClassName">
         <SelectOptionsListElement
             v-for="country in countryList"
-            :key="country.name"
+            :key="country.id"
             :country="country"
-            @add-to-selected="addCountryToSelected"
-            @remove-from-selected="removeCountryFromSelected"
+            @clicked="selectElementToggle"
         ></SelectOptionsListElement>
       </div>
 
@@ -33,9 +31,11 @@
 </template>
 
 <script setup lang='ts'>
-import {computed, reactive, ref} from "vue";
+import type {Ref} from "vue";
+import {computed, ref} from "vue";
 import SelectOptionsListElement from "@/components/MultiSelect/SelectOptionsListElement.vue";
 import SelectedListElement from "@/components/MultiSelect/SelectedListElement.vue";
+import type {CountryListElement} from "@/types/CountryListElement";
 
 const props = defineProps({
   title: {
@@ -44,50 +44,44 @@ const props = defineProps({
   }
 });
 
-export type CountryListElement = {
-  name: string;
-  isSelected: boolean;
-};
+const countryList: Ref<Array<CountryListElement>> = ref([
+  {id: 0, name: "Australia", isSelected: false},
+  {id: 1, name: "Germany", isSelected: false},
+  {id: 2, name: "France", isSelected: false},
+  {id: 3, name: "Poland", isSelected: false},
+  {id: 4, name: "Italy", isSelected: false},
+]);
 
-const countryList: Array<CountryListElement> = [
-  {name: "Australia", isSelected: false},
-  {name: "Germany", isSelected: false},
-  {name: "Paris", isSelected: false},
-  {name: "Poland", isSelected: false},
-  {name: "Italy", isSelected: false},
-];
-const selectedCountryList: Array<string> = reactive([])
+const selectedCountryList = computed(() => {
+  return countryList.value.filter(el => el.isSelected)
+});
 
-function addCountryToSelected(id: number) {
-  selectedCountryList.push(countryList[id].name)
-  countryList[id].isSelected = true;
+function removeCountryFromSelected(id: number) {
+  countryList.value[id].isSelected = false;
 }
 
-
-function removeCountryFromSelected(title: string) {
-  const selectedCountryIndex = selectedCountryList.findIndex(el => el == title);
-  const countryListIndex = countryList.findIndex((el: CountryListElement) => el.name == title);
-  selectedCountryList.splice(selectedCountryIndex, 1);
-  countryList[countryListIndex].isSelected = false;
+function selectElementToggle(id: number) {
+  countryList.value[id].isSelected = !countryList.value[id].isSelected;
 }
-
 
 const isListHidden = ref(true);
 
 const selectOptionsListClassName = computed(() => {
   if (!isListHidden.value) {
     return "select-options-list";
-  } else return "select-options-list hidden"
+  }
+  return "select-options-list hidden";
 });
 
 const arrowButtonClassName = computed(() => {
   if (isListHidden.value) {
-    return "arrow-button"
-  } else return "arrow-button clicked"
+    return "arrow-button";
+  }
+  return "arrow-button clicked";
 })
 
 function listVisibilityToggle() {
-  isListHidden.value = !isListHidden.value
+  isListHidden.value = !isListHidden.value;
 }
 </script>
 

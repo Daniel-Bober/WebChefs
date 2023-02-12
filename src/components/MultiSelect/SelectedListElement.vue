@@ -1,26 +1,26 @@
 <template>
 <div class="selected-list-element">
-  <div class="title">{{ props.title }}</div>
+  <div class="title">{{ props.selectedCountry.name }}</div>
   <button @click="removeFromSelected"><img src="src/assets/images/icons/x.svg" alt="delete icon"></button>
 </div>
 </template>
 
 <script setup lang='ts'>
+import type {PropType} from "vue";
+import type {CountryListElement} from "@/types/CountryListElement";
+
 const props = defineProps({
-  title: {
-    type: String,
-    required: true
-  },
-  id: {
-    type: Number,
-    required: true
-  }
+ selectedCountry: {
+   type: Object as PropType <CountryListElement>,
+   required: true
+
+ }
 });
 
-const emit = defineEmits(["removeFromSelected"])
+const emit = defineEmits(["removeFromSelected"]);
 
 function removeFromSelected() {
-  emit("removeFromSelected", props.title)
+  emit("removeFromSelected", props.selectedCountry.id);
 }
 </script>
 
