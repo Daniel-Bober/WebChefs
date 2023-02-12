@@ -1,9 +1,9 @@
 <template>
   <div class="list-component">
-    <div class="title">{{ props.title }}</div>
+    <div class="title">{{ props.permission.title }}</div>
 
     <div class="buttons-group">
-      <SmallButton :color="ButtonColor.Gray">CREATE</SmallButton>
+      <SmallButton :color="ButtonColor.Gray" @click="emitCreateButtonEvent">CREATE</SmallButton>
       <SmallButton :color="ButtonColor.Blue">READ</SmallButton>
       <SmallButton :color="ButtonColor.Green">UPDATE</SmallButton>
       <SmallButton :color="ButtonColor.Red">DELETE</SmallButton>
@@ -14,13 +14,23 @@
 <script setup lang='ts'>
 import SmallButton from "@/components/SmallButton.vue";
 import ButtonColor from "@/enums/SmallButtonColors";
+import PermissionsListElement from "@/components/TabNav/TheTabContent/Permissions/PermissionsList.vue";
 
 const props = defineProps({
-  title: {
-    type: String,
+  permission: {
+    type: PermissionsListElement,
     required: true
-  }
+  },
 });
+
+const emit = defineEmits(["createButtonClicked"]);
+
+
+function emitCreateButtonEvent() {
+  if(props.permission.isCreateButtonActive) {
+    emit("createButtonClicked", props.permission.id);
+  }
+}
 </script>
 
 <style lang='scss' scoped>
