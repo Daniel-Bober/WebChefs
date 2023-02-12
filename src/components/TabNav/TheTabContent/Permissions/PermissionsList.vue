@@ -21,13 +21,10 @@
 </template>
 
 <script setup lang='ts'>
+import type {PermissionListElement} from "@/types/PermissionListElement";
 import PermissionsListComponent from "@/components/TabNav/TheTabContent/Permissions/PermissionsListComponent.vue";
 
-export type PermissionListElement = {
-  id: number,
-  name: String,
-  isCreateButtonActive: Boolean
-}
+
 
 const permissionsList: Array<PermissionListElement> = [
   {id: 0, name: "Script", isCreateButtonActive: false},
