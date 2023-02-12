@@ -24,8 +24,6 @@
 import type {PermissionListElement} from "@/types/PermissionListElement";
 import PermissionsListComponent from "@/components/TabNav/TheTabContent/Permissions/PermissionsListComponent.vue";
 
-
-
 const permissionsList: Array<PermissionListElement> = [
   {id: 0, name: "Script", isCreateButtonActive: false},
   {id: 1, name: "Props", isCreateButtonActive: false},
