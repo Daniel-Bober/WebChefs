@@ -1,1 +1,0 @@
-import{_ as s,o as t,c,p as _,a as o,b as a}from"./index-fd7dae93.js";const d={},n=e=>(_("data-v-fccd29fb"),e=e(),o(),e),i={class:"user-list"},p=n(()=>a("h1",null,"Settings",-1)),r=[p];function f(e,l){return t(),c("div",i,r)}const h=s(d,[["render",f],["__scopeId","data-v-fccd29fb"]]);export{h as default};

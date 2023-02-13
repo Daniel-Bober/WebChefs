@@ -1,0 +1,1 @@
+import{_ as e,o,c,p as _,a as t,b as a}from"./index-8dac000f.js";const n={},d=s=>(_("data-v-93c3b7a6"),s=s(),t(),s),i={class:"user-list"},r=d(()=>a("h1",null,"Roles and Permissions",-1)),p=[r];function l(s,u){return o(),c("div",i,p)}const m=e(n,[["render",l],["__scopeId","data-v-93c3b7a6"]]);export{m as default};
