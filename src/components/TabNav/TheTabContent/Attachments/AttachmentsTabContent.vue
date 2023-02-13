@@ -11,19 +11,18 @@
 
         <div class="input-container name-input">
           <label for="name">Name: </label>
-          <input type="text" id="name">
+          <input type="text" id="name" @input="emitFormChange">
         </div>
 
         <div class="input-container">
           <label for="last-name">Last Name: </label>
-          <input type="text" id="last-name">
+          <input type="text" id="last-name" @input="emitFormChange">
         </div>
 
         <div class="input-container">
           <label for="date">Birth date: </label>
-          <input type="date" id="date">
+          <input type="date" id="date" @input="emitFormChange">
         </div>
-
 
       </div>
 
@@ -47,24 +46,24 @@
       <div class="left-side">
         <div class="input-container">
           <label for="instagram">Instagram</label>
-          <input type="text" id="instagram">
+          <input type="text" id="instagram" @input="emitFormChange">
         </div>
 
         <div class="input-container">
           <label for="tweeter">Tweeter</label>
-          <input type="text" id="tweeter">
+          <input type="text" id="tweeter" @input="emitFormChange">
         </div>
       </div>
 
       <div class="right-side">
         <div class="input-container">
           <label for="email">Email</label>
-          <input type="text" id="email">
+          <input type="text" id="email" @input="emitFormChange">
         </div>
 
         <div class="input-container">
-          <label for="Facebook">Facebook</label>
-          <input type="text" id="Facebook">
+          <label for="facebook">Facebook</label>
+          <input type="text" id="facebook" @input="emitFormChange">
         </div>
       </div>
     </div>
@@ -73,6 +72,11 @@
 </template>
 
 <script setup lang='ts'>
+const emit = defineEmits(["formChanged"]);
+
+function emitFormChange(event: any) {
+  emit("formChanged", event.target.id, event.target.value);
+}
 
 </script>
 
@@ -132,9 +136,7 @@
       }
 
       input[type="date"] {
-        background: url("src/assets/images/icons/callendar.svg");
-        background-repeat: no-repeat;
-        background-position: 95%;
+        background: url("src/assets/images/icons/callendar.svg") no-repeat 95%;
       }
 
       input[type="date"]::-webkit-calendar-picker-indicator {

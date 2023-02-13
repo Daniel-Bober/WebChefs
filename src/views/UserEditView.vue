@@ -12,7 +12,7 @@
         <BigButton :color="ButtonColor.Red">DELETE</BigButton>
         <BigButton :color="ButtonColor.Yellow">BLOCK</BigButton>
         <BigButton :color="ButtonColor.GrayBlue">SET PASSWORD</BigButton>
-        <BigButton :color="ButtonColor.Blue">SAVE</BigButton>
+        <BigButton :color="ButtonColor.Blue" @click="submitReactiveForm">SAVE</BigButton>
       </div>
     </div>
 
@@ -32,7 +32,7 @@
       <TabNavigation>
 
         <TheTab title="Attachments">
-          <AttachmentsTabContent></AttachmentsTabContent>
+          <AttachmentsTabContent @form-changed="formUpdate"></AttachmentsTabContent>
         </TheTab>
 
         <TheTab title="History">History</TheTab>
@@ -51,6 +51,26 @@ import PermissionsTabContent from "@/components/TabNav/TheTabContent/Permissions
 import AttachmentsTabContent from "@/components/TabNav/TheTabContent/Attachments/AttachmentsTabContent.vue";
 import BigButton from "@/components/BigButton.vue";
 import ButtonColor from "@/enums/BigButtonColors";
+import {reactive} from "vue";
+
+const form = reactive([
+  {id: "name", value: ""},
+  {id: "last-name", value: ""},
+  {id: "date", value: ""},
+  {id: "instagram", value: ""},
+  {id: "tweeter", value: ""},
+  {id: "email", value: ""},
+  {id: "facebook", value: ""},
+]);
+
+function formUpdate(id: string, value: string) {
+  const index = form.findIndex(el => el.id == id);
+  form[index].value = value;
+}
+
+function submitReactiveForm() {
+  //submit form
+}
 
 </script>
 
