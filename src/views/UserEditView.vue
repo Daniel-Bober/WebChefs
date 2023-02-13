@@ -12,7 +12,7 @@
         <BigButton :color="ButtonColor.Red">DELETE</BigButton>
         <BigButton :color="ButtonColor.Yellow" @click="showPopUpWindow">BLOCK</BigButton>
         <BigButton :color="ButtonColor.GrayBlue">SET PASSWORD</BigButton>
-        <BigButton :color="ButtonColor.Blue">SAVE</BigButton>
+        <BigButton :color="ButtonColor.Blue" @click="submitReactiveForm">SAVE</BigButton>
       </div>
     </div>
 
@@ -32,7 +32,7 @@
       <TabNavigation>
 
         <TheTab title="Attachments">
-          <AttachmentsTabContent></AttachmentsTabContent>
+          <AttachmentsTabContent @form-changed="formUpdate"></AttachmentsTabContent>
         </TheTab>
 
         <TheTab title="History">History</TheTab>
@@ -75,6 +75,26 @@ function closePopUpWindow() {
 function blockUser() {
   //Block User
   closePopUpWindow()
+}
+import {reactive} from "vue";
+
+const form = reactive([
+  {id: "name", value: ""},
+  {id: "last-name", value: ""},
+  {id: "date", value: ""},
+  {id: "instagram", value: ""},
+  {id: "tweeter", value: ""},
+  {id: "email", value: ""},
+  {id: "facebook", value: ""},
+]);
+
+function formUpdate(id: string, value: string) {
+  const index = form.findIndex(el => el.id == id);
+  form[index].value = value;
+}
+
+function submitReactiveForm() {
+  //submit form
 }
 
 </script>
