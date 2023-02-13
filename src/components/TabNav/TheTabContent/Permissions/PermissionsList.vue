@@ -35,6 +35,7 @@ const permissionsList: Array<PermissionListElement> = [
 function createButtonClicked(id: number) {
   //in this test exercise let's assume index is also id
   permissionsList[id].isCreateButtonActive = !permissionsList[id].isCreateButtonActive;
+  console.log(permissionsList[id].name, permissionsList[id].isCreateButtonActive); //TODO [DEV] console log
 }
 </script>
 

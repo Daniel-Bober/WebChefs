@@ -72,7 +72,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -187,21 +186,12 @@ function emitFormChange(event: any) {
         margin-top: 16px;
       }
     }
-
   }
 
   .contact-section {
     padding: 0 32px;
     display: flex;
     gap: 39px;
-
-    .left-side {
-
-    }
-
-    .right-side {
-
-    }
   }
 }
 </style>

@@ -16,14 +16,12 @@ const props = defineProps({
   }
 });
 
-
 const listElementClassName = computed(() => {
   if(useRoute().path != props.path) {
     return "list-element"
   }
   else return "list-element selected"
 })
-
 
 </script>
 
@@ -72,7 +70,5 @@ const listElementClassName = computed(() => {
       background-color: $primary-b;
     }
   }
-
 }
-
 </style>

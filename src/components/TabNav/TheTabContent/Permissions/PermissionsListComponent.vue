@@ -26,7 +26,6 @@ const props = defineProps({
 
 const emit = defineEmits(["createButtonClicked"]);
 
-
 function emitCreateButtonEvent() {
   emit("createButtonClicked", props.permission.id);
 }

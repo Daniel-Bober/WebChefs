@@ -6,15 +6,16 @@
         <div class="title">ZLECENIA</div>
         <div class="number">245</div>
       </div>
+
       <div class="info-box">
         <div class="title">DEPOZYTY</div>
         <div class="number">245</div>
       </div>
+
       <div class="info-box">
         <div class="title">ZAMÓWIENIA</div>
         <div class="number">245</div>
       </div>
-
     </div>
 
     <div class="right-side">
@@ -24,9 +25,7 @@
       </div>
 
       <div class="profile-box">
-
         <div class="avatar"><img src="../assets/images/Avatar.png" alt="avatar"></div>
-
 
         <div class="profile-name">Warsztat A12</div>
 

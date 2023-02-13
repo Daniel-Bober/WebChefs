@@ -75,9 +75,10 @@ function closePopUpWindow() {
 function blockUser() {
   //Block User
   closePopUpWindow()
+  console.log("user blocked"); //TODO [DEV] console log
 }
 
-const form = reactive([
+const attachmentsForm = reactive([
   {id: "name", value: ""},
   {id: "last-name", value: ""},
   {id: "date", value: ""},
@@ -88,12 +89,13 @@ const form = reactive([
 ]);
 
 function formUpdate(id: string, value: string) {
-  const index = form.findIndex(el => el.id == id);
-  form[index].value = value;
+  const index = attachmentsForm.findIndex(el => el.id == id);
+  attachmentsForm[index].value = value;
 }
 
 function submitReactiveForm() {
   //submit form
+  console.log(attachmentsForm); //TODO [DEV] console log
 }
 
 </script>

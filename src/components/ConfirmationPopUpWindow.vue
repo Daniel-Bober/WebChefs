@@ -31,7 +31,8 @@ const emit = defineEmits(["confirm", "reject"])
 const popUpWindowClassName = computed(() => {
   if (!props.isHidden) {
     return "pop-up-window"
-  } else return "pop-up-window hidden"
+  }
+  return "pop-up-window hidden"
 })
 
 function confirm() {
@@ -108,8 +109,6 @@ function reject() {
       left: 0;
     }
   }
-
-
 }
 
 .pop-up-window.hidden {

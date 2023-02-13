@@ -24,15 +24,13 @@ const props = defineProps({
   isMenuHidden: Boolean
 })
 
-
-
 const isClicked = ref(false);
 
 const dropDownButtonClassName = computed(() => {
   if(!isClicked.value) {
     return 'drop-down-button'
   }
-  else return 'drop-down-button clicked'
+  return 'drop-down-button clicked'
 });
 
 function isClickedToggle() {

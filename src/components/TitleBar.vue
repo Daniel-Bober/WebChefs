@@ -9,7 +9,6 @@
   </div>
 
   <div class="bottom-line"></div>
-
 </div>
 </template>
 
@@ -34,7 +33,6 @@
       font-size: $font-20px;
       color: $blue-dark;
       font-weight: normal;
-
     }
 
     h2 {
