@@ -4,12 +4,12 @@
 
 <script setup lang='ts'>
 import {computed} from "vue";
-import type {CountryListElement} from "@/types/CountryListElement";
+import type {MultiSelectListElement} from "@/types/MultiSelectListElement";
 import type {PropType} from "vue"
 
 const props = defineProps({
   country: {
-    type: Object as PropType <CountryListElement>,
+    type: Object as PropType <MultiSelectListElement>,
     required: true
   }
 });

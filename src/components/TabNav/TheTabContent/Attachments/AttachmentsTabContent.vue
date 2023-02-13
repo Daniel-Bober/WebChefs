@@ -34,9 +34,10 @@
           <div class="second-text">Drag and drop files or select from your files</div>
         </div>
 
-        <div class="multi-select">
+        <div class="multi-select-wrapper">
           <MultiSelect
               title="Citizenship"
+              :data="countryList"
           ></MultiSelect>
         </div>
 
@@ -77,12 +78,25 @@
 
 <script setup lang='ts'>
 import MultiSelect from "@/components/MultiSelect/MultiSelect.vue";
+import {computed, ref} from "vue";
+import type {MultiSelectListElement} from "@/types/MultiSelectListElement";
+import type {Ref} from "vue";
 
 const emit = defineEmits(["formChanged"]);
 
 function emitFormChange(event: any) {
   emit("formChanged", event.target.id, event.target.value);
 }
+
+const countryList: Ref<Array<MultiSelectListElement>> = ref([
+  {id: 0, name: "Australia", isSelected: false},
+  {id: 1, name: "Germany", isSelected: false},
+  {id: 2, name: "France", isSelected: false},
+  {id: 3, name: "Poland", isSelected: false},
+  {id: 4, name: "Italy", isSelected: false},
+]);
+
+
 </script>
 
 <style lang='scss' scoped>
@@ -182,7 +196,7 @@ function emitFormChange(event: any) {
         }
       }
 
-      .multi-select {
+      .multi-select-wrapper{
         margin-top: 16px;
       }
     }

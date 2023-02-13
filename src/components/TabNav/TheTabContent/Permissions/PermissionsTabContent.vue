@@ -3,6 +3,13 @@
 
   <div class="role-section">
     <div class="role">Role: <span>Performer</span></div>
+
+    <div class="multi-select-wrapper">
+      <MultiSelect
+          title="Asign Role"
+          :data="roles"
+      ></MultiSelect>
+    </div>
   </div>
 
   <PermissionsList></PermissionsList>
@@ -11,8 +18,17 @@
 </template>
 
 <script setup lang='ts'>
-
 import PermissionsList from "@/components/TabNav/TheTabContent/Permissions/PermissionsList.vue";
+import MultiSelect from "@/components/MultiSelect/MultiSelect.vue";
+import {ref} from "vue";
+import type {MultiSelectListElement} from "@/types/MultiSelectListElement";
+import type {Ref} from "vue";
+
+
+const roles: Ref<Array<MultiSelectListElement>> = ref([
+  {id: 0, name: "Performer", isSelected: false},
+  {id: 1, name: "Role 2", isSelected: false},
+]);
 </script>
 
 <style lang='scss' scoped>
@@ -37,6 +53,10 @@ import PermissionsList from "@/components/TabNav/TheTabContent/Permissions/Permi
         font-size: $font-16px;
         color: $primary-b;
       }
+    }
+
+    .multi-select-wrapper {
+      padding: 13px 32px 0 0;
     }
   }
 }

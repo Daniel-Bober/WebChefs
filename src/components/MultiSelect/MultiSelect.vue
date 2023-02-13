@@ -6,10 +6,10 @@
 
       <div class="selected-elements">
         <SelectedListElement
-            v-for="selectedCountry in selectedCountryList"
+            v-for="selectedCountry in selectedElementsList"
             :key="selectedCountry.id"
             :selected-country="selectedCountry"
-            @remove-from-selected="removeCountryFromSelected"
+            @remove-from-selected="removeElementFromSelected"
         ></SelectedListElement>
       </div>
 
@@ -19,7 +19,7 @@
 
       <div :class="selectOptionsListClassName">
         <SelectOptionsListElement
-            v-for="country in countryList"
+            v-for="country in props.data"
             :key="country.id"
             :country="country"
             @clicked="selectElementToggle"
@@ -31,38 +31,22 @@
 </template>
 
 <script setup lang='ts'>
-import type {Ref} from "vue";
 import {computed, ref} from "vue";
 import SelectOptionsListElement from "@/components/MultiSelect/SelectOptionsListElement.vue";
 import SelectedListElement from "@/components/MultiSelect/SelectedListElement.vue";
-import type {CountryListElement} from "@/types/CountryListElement";
+import type {PropType} from "vue";
+
 
 const props = defineProps({
   title: {
     type: String,
     required: true
+  },
+  data: {
+    type: Array as PropType<Array<any>>,
+    required: true
   }
 });
-
-const countryList: Ref<Array<CountryListElement>> = ref([
-  {id: 0, name: "Australia", isSelected: false},
-  {id: 1, name: "Germany", isSelected: false},
-  {id: 2, name: "France", isSelected: false},
-  {id: 3, name: "Poland", isSelected: false},
-  {id: 4, name: "Italy", isSelected: false},
-]);
-
-const selectedCountryList = computed(() => {
-  return countryList.value.filter(el => el.isSelected)
-});
-
-function removeCountryFromSelected(id: number) {
-  countryList.value[id].isSelected = false;
-}
-
-function selectElementToggle(id: number) {
-  countryList.value[id].isSelected = !countryList.value[id].isSelected;
-}
 
 const isListHidden = ref(true);
 
@@ -79,6 +63,20 @@ const arrowButtonClassName = computed(() => {
   }
   return "arrow-button clicked";
 })
+
+const selectedElementsList = computed(() => {
+  if(props.data) {
+    return props.data.filter(el => el.isSelected)
+  }
+});
+
+function removeElementFromSelected(id: number) {
+  props.data[id].isSelected = false;
+}
+
+function selectElementToggle(id: number) {
+  props.data[id].isSelected = !props.data[id].isSelected;
+}
 
 function listVisibilityToggle() {
   isListHidden.value = !isListHidden.value;
