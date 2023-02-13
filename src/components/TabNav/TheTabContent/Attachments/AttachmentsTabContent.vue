@@ -37,7 +37,7 @@
         <div class="multi-select-wrapper">
           <MultiSelect
               title="Citizenship"
-              :data="countryList"
+              :el="countryList"
           ></MultiSelect>
         </div>
 
@@ -78,7 +78,7 @@
 
 <script setup lang='ts'>
 import MultiSelect from "@/components/MultiSelect/MultiSelect.vue";
-import {computed, ref} from "vue";
+import {ref} from "vue";
 import type {MultiSelectListElement} from "@/types/MultiSelectListElement";
 import type {Ref} from "vue";
 

@@ -6,9 +6,9 @@
 
       <div class="selected-elements">
         <SelectedListElement
-            v-for="selectedCountry in selectedElementsList"
-            :key="selectedCountry.id"
-            :selected-country="selectedCountry"
+            v-for="selectedElement in selectedElementsList"
+            :key="selectedElement.id"
+            :selected-element="selectedElement"
             @remove-from-selected="removeElementFromSelected"
         ></SelectedListElement>
       </div>
@@ -19,9 +19,9 @@
 
       <div :class="selectOptionsListClassName">
         <SelectOptionsListElement
-            v-for="country in props.data"
-            :key="country.id"
-            :country="country"
+            v-for="el in props.el"
+            :key="el.id"
+            :el="el"
             @clicked="selectElementToggle"
         ></SelectOptionsListElement>
       </div>
@@ -42,7 +42,7 @@ const props = defineProps({
     type: String,
     required: true
   },
-  data: {
+  el: {
     type: Array as PropType<Array<any>>,
     required: true
   }
@@ -65,17 +65,17 @@ const arrowButtonClassName = computed(() => {
 })
 
 const selectedElementsList = computed(() => {
-  if(props.data) {
-    return props.data.filter(el => el.isSelected)
+  if(props.el) {
+    return props.el.filter(el => el.isSelected)
   }
 });
 
 function removeElementFromSelected(id: number) {
-  props.data[id].isSelected = false;
+  props.el[id].isSelected = false;
 }
 
 function selectElementToggle(id: number) {
-  props.data[id].isSelected = !props.data[id].isSelected;
+  props.el[id].isSelected = !props.el[id].isSelected;
 }
 
 function listVisibilityToggle() {

@@ -6,8 +6,8 @@
 
     <div class="multi-select-wrapper">
       <MultiSelect
-          title="Asign Role"
-          :data="roles"
+          title="Assign Role"
+          :el="roles"
       ></MultiSelect>
     </div>
   </div>

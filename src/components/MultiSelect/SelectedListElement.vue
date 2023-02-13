@@ -1,6 +1,6 @@
 <template>
 <div class="selected-list-element">
-  <div class="title">{{ props.selectedCountry.name }}</div>
+  <div class="title">{{ props.selectedElement.name }}</div>
   <button @click="removeFromSelected"><img src="../../assets/images/icons/x.svg" alt="delete icon"></button>
 </div>
 </template>
@@ -10,7 +10,7 @@ import type {PropType} from "vue";
 import type {MultiSelectListElement} from "@/types/MultiSelectListElement";
 
 const props = defineProps({
- selectedCountry: {
+ selectedElement: {
    type: Object as PropType <MultiSelectListElement>,
    required: true
 
@@ -20,7 +20,7 @@ const props = defineProps({
 const emit = defineEmits(["removeFromSelected"]);
 
 function removeFromSelected() {
-  emit("removeFromSelected", props.selectedCountry.id);
+  emit("removeFromSelected", props.selectedElement.id);
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <button :class="selectOptionsListElementClassName" @click="emitClickEvent">{{ props.country.name }}</button>
+  <button :class="selectOptionsListElementClassName" @click="emitClickEvent">{{ props.el.name }}</button>
 </template>
 
 <script setup lang='ts'>
@@ -8,7 +8,7 @@ import type {MultiSelectListElement} from "@/types/MultiSelectListElement";
 import type {PropType} from "vue"
 
 const props = defineProps({
-  country: {
+  el: {
     type: Object as PropType <MultiSelectListElement>,
     required: true
   }
@@ -18,14 +18,14 @@ const emit = defineEmits(["addToSelected", "removeFromSelected", "clicked"]);
 
 
 const selectOptionsListElementClassName = computed(() => {
-  if (!props.country.isSelected) {
+  if (!props.el.isSelected) {
     return "select-options-list-element"
   }
   return "select-options-list-element selected"
 });
 
 function emitClickEvent() {
-  emit("clicked", props.country.id);
+  emit("clicked", props.el.id);
 }
 
 </script>
