@@ -10,7 +10,7 @@
 
       <div class="buttons-group">
         <BigButton :color="ButtonColor.Red">DELETE</BigButton>
-        <BigButton :color="ButtonColor.Yellow">BLOCK</BigButton>
+        <BigButton :color="ButtonColor.Yellow" @click="showPopUpWindow">BLOCK</BigButton>
         <BigButton :color="ButtonColor.GrayBlue">SET PASSWORD</BigButton>
         <BigButton :color="ButtonColor.Blue">SAVE</BigButton>
       </div>
@@ -40,6 +40,13 @@
       </TabNavigation>
     </div>
 
+    <ConfirmationPopUpWindow
+        :is-hidden="isPopUpHidden"
+        @confirm="blockUser"
+        @reject="closePopUpWindow"
+    >
+      Are you sure you want to block this user?
+    </ConfirmationPopUpWindow>
   </div>
 </template>
 
@@ -51,6 +58,24 @@ import PermissionsTabContent from "@/components/TabNav/TheTabContent/Permissions
 import AttachmentsTabContent from "@/components/TabNav/TheTabContent/Attachments/AttachmentsTabContent.vue";
 import BigButton from "@/components/BigButton.vue";
 import ButtonColor from "@/enums/BigButtonColors";
+import ConfirmationPopUpWindow from "@/components/ConfirmationPopUpWindow.vue";
+import {ref} from "vue";
+
+
+const isPopUpHidden = ref(true);
+
+function showPopUpWindow() {
+  isPopUpHidden.value = false;
+}
+
+function closePopUpWindow() {
+  isPopUpHidden.value = true;
+}
+
+function blockUser() {
+  //Block User
+  closePopUpWindow()
+}
 
 </script>
 
@@ -61,6 +86,7 @@ import ButtonColor from "@/enums/BigButtonColors";
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  position: relative;
 
   .top-section {
     height: 42px;
