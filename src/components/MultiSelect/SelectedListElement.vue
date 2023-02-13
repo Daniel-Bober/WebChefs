@@ -1,7 +1,7 @@
 <template>
 <div class="selected-list-element">
   <div class="title">{{ props.selectedCountry.name }}</div>
-  <button @click="removeFromSelected"><img src="src/assets/images/icons/x.svg" alt="delete icon"></button>
+  <button @click="removeFromSelected"><img src="../../assets/images/icons/x.svg" alt="delete icon"></button>
 </div>
 </template>
 

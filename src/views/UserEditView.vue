@@ -60,7 +60,7 @@ import BigButton from "@/components/BigButton.vue";
 import ButtonColor from "@/enums/BigButtonColors";
 import ConfirmationPopUpWindow from "@/components/ConfirmationPopUpWindow.vue";
 import {ref} from "vue";
-
+import {reactive} from "vue";
 
 const isPopUpHidden = ref(true);
 
@@ -76,7 +76,6 @@ function blockUser() {
   //Block User
   closePopUpWindow()
 }
-import {reactive} from "vue";
 
 const form = reactive([
   {id: "name", value: ""},

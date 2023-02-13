@@ -29,7 +29,7 @@
       <div class="right-side">
 
         <div class="files-section">
-          <img src="src/assets/images/icons/documents.svg" alt="documents icon">
+          <img src="../../../../assets/images/icons/documents.svg" alt="documents icon">
           <div class="first-text">Drag and drop files</div>
           <div class="second-text">Drag and drop files or select from your files</div>
         </div>
@@ -77,13 +77,13 @@
 </template>
 
 <script setup lang='ts'>
+import MultiSelect from "@/components/MultiSelect/MultiSelect.vue";
+
 const emit = defineEmits(["formChanged"]);
 
 function emitFormChange(event: any) {
   emit("formChanged", event.target.id, event.target.value);
 }
-
-import MultiSelect from "@/components/MultiSelect/MultiSelect.vue";
 </script>
 
 <style lang='scss' scoped>
@@ -142,7 +142,7 @@ import MultiSelect from "@/components/MultiSelect/MultiSelect.vue";
       }
 
       input[type="date"] {
-        background: url("src/assets/images/icons/callendar.svg") no-repeat 95%;
+        background: url("../../../../assets/images/icons/callendar.svg") no-repeat 95%;
       }
 
       input[type="date"]::-webkit-calendar-picker-indicator {

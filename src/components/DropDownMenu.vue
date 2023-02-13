@@ -1,7 +1,7 @@
 <template>
   <div :class="dropDownMenuClassName">
     <div class="top-section">
-      <button @click=hiddeMenuToggle><img src="src/assets/images/icons/menu.svg" alt="menu-icon"></button>
+      <button @click=hiddeMenuToggle><img src="../assets/images/icons/menu.svg" alt="menu-icon"></button>
 
       <div class="date-section">
         <div class="day">Thursday</div>

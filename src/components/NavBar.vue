@@ -20,17 +20,17 @@
     <div class="right-side">
 
       <div class="notification-box">
-        <button><img src="src/assets/images/icons/Bellcounter.svg" alt="notification icon"></button>
+        <button><img src="../assets/images/icons/bellCounter.svg" alt="notification icon"></button>
       </div>
 
       <div class="profile-box">
 
-        <div class="avatar"><img src="src/assets/images/Avatar.png" alt="avatar"></div>
+        <div class="avatar"><img src="../assets/images/Avatar.png" alt="avatar"></div>
 
 
         <div class="profile-name">Warsztat A12</div>
 
-        <button><img src="src/assets/images/icons/downArrow.svg" alt="down arrow icon"></button>
+        <button><img src="../assets/images/icons/downArrow.svg" alt="down arrow icon"></button>
       </div>
 
     </div>

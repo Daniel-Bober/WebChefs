@@ -1,6 +1,6 @@
 <template>
 <div class="nav-bar">
-  <img src="src/assets/images/WebChefsLogo.svg" alt="logo">
+  <img src="../assets/images/WebChefsLogo.svg" alt="logo">
   <div class="text-group">
     <div>
       <h1>Zadanie rekrutacyjne</h1>
