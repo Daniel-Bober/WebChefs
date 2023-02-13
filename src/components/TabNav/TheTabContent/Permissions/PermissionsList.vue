@@ -10,8 +10,10 @@
 
     <div class="components-list">
       <PermissionsListComponent
-          v-for="el in permissions"
-          :title="el"
+          v-for="permission in permissionsList"
+          :key="permission.id"
+          :permission="permission"
+          @create-button-clicked="createButtonClicked"
       ></PermissionsListComponent>
     </div>
 
@@ -19,10 +21,21 @@
 </template>
 
 <script setup lang='ts'>
-
-const permissions = ["Script", "Props", "Screen", "Money", "Stunt"]
-
+import type {PermissionListElement} from "@/types/PermissionListElement";
 import PermissionsListComponent from "@/components/TabNav/TheTabContent/Permissions/PermissionsListComponent.vue";
+
+const permissionsList: Array<PermissionListElement> = [
+  {id: 0, name: "Script", isCreateButtonActive: false},
+  {id: 1, name: "Props", isCreateButtonActive: false},
+  {id: 2, name: "Screen", isCreateButtonActive: false},
+  {id: 3, name: "Money", isCreateButtonActive: false},
+  {id: 4, name: "Stunt", isCreateButtonActive: false},
+];
+
+function createButtonClicked(id: number) {
+  //in this test exercise let's assume index is also id
+  permissionsList[id].isCreateButtonActive = !permissionsList[id].isCreateButtonActive;
+}
 </script>
 
 <style lang='scss' scoped>
@@ -36,7 +49,7 @@ import PermissionsListComponent from "@/components/TabNav/TheTabContent/Permissi
     display: flex;
     border-bottom: 1px solid $ui-g4;
 
-    div{
+    div {
       font-family: "rubik-medium", serif;
       font-size: $font-12px;
       color: $ui-g1;
